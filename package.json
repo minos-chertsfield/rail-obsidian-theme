@@ -1,0 +1,13 @@
+{
+    "name": "rail-obsidian-theme",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "lint": "stylelint theme.css",
+        "generate": "python3 scripts/generate_theme.py"
+    },
+    "devDependencies": {
+        "stylelint": "^17.0.0",
+        "stylelint-config-obsidianmd": "^0.1.0"
+    }
+}
