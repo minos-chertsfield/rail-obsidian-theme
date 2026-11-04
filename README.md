@@ -23,8 +23,14 @@ plugin under **Settings → Style Settings → Rail Theme**:
 - **Rail High Contrast Dark / Light** — stronger borders, opaque selections.
 - **Rail Minimal Dark / Light** — desaturated accents for quieter setups.
 
+| Rail High Contrast | Rail Minimal |
+| --- | --- |
+| ![Rail High Contrast Dark](screenshots/rail-high-contrast-dark.png) | ![Rail Minimal Dark](screenshots/rail-minimal-dark.png) |
+| ![Rail High Contrast Light](screenshots/rail-high-contrast-light.png) | ![Rail Minimal Light](screenshots/rail-minimal-light.png) |
+
 Dark palettes apply while Obsidian is in dark mode, light palettes in light
 mode. Without Style Settings the base Rail Dark / Rail Light schemes are used.
+All screenshots use [samples/theme-showcase.md](samples/theme-showcase.md).
 
 ## Install
 

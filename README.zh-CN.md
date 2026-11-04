@@ -22,8 +22,14 @@
 - **Rail High Contrast Dark / Light** —— 更强的边框、不透明选区。
 - **Rail Minimal Dark / Light** —— 低饱和度点缀，更安静的观感。
 
+| Rail High Contrast | Rail Minimal |
+| --- | --- |
+| ![Rail High Contrast Dark](screenshots/rail-high-contrast-dark.png) | ![Rail Minimal Dark](screenshots/rail-minimal-dark.png) |
+| ![Rail High Contrast Light](screenshots/rail-high-contrast-light.png) | ![Rail Minimal Light](screenshots/rail-minimal-light.png) |
+
 深色配色仅在 Obsidian 处于深色模式时生效，浅色同理。未安装 Style
-Settings 时使用默认的 Rail Dark / Rail Light。
+Settings 时使用默认的 Rail Dark / Rail Light。所有截图均使用
+[samples/theme-showcase.md](samples/theme-showcase.md)。
 
 ## 安装
 
@@ -56,7 +62,7 @@ git clone https://github.com/minos-chertsfield/rail-obsidian-theme.git \
 - `theme.css` 由 `scripts/generate_theme.py` 生成，请改脚本而不是改样式文件。
 - 不内置字体；社区主题不允许加载远程资源。想要原版观感请自行安装
   Geist / JetBrains Mono。
-- 符合社区主题规范：无网络请求、无 `!important`、无 `:has()``，
+- 符合社区主题规范：无网络请求、无 `!important`、无 `:has()`，
   使用 `stylelint-config-obsidianmd` 进行 lint。
 
 English version: [README.md](README.md)
