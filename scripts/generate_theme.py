@@ -198,6 +198,51 @@ def alpha(color, factor):
     return "#%s%02x" % (h, round(255 * factor))
 
 
+def rel_luma(hexcolor):
+    """Relative luminance (WCAG) of a hex color, 0..1."""
+    h = hexcolor.lstrip("#")
+    if len(h) == 3:
+        h = "".join(ch * 2 for ch in h)
+    vals = []
+    for i in (0, 2, 4):
+        c = int(h[i:i + 2], 16) / 255
+        vals.append(c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4)
+    return 0.2126 * vals[0] + 0.7152 * vals[1] + 0.0722 * vals[2]
+
+
+def code_bg(p):
+    """Pick the code-block background for a palette.
+
+    Code blocks must stand out from the note background. Two cases:
+
+    - The palette content surface differs from the note background by a
+      clear RGB step (light palettes, HC after blending): use it as-is —
+      it matches the VS Code textCodeBlock.background of the same theme.
+    - The content surface sits within a few RGB points of the note
+      background (HC Dark/Light share background == content; Rail Dark
+      #18181b on #09090b and Minimal Dark #181b1e on #1c1f22 are 2-4
+      points apart): blend the content color 35% toward the strong border
+      color until a clearly visible surface step appears.
+    """
+    bg, content = p["background"], p["content"]
+
+    def rgb(c):
+        c = c.lstrip("#")
+        if len(c) == 3:
+            c = "".join(ch * 2 for ch in c)
+        return tuple(int(c[i:i + 2], 16) for i in (0, 2, 4))
+
+    dr, dg, db = (abs(a - b) for a, b in zip(rgb(bg), rgb(content)))
+    if max(dr, dg, db) >= 12:
+        return content
+    step = content
+    for _ in range(8):
+        step = mix(step, 35, p["borderStrong"])
+        if abs(rel_luma(bg) - rel_luma(step)) >= 0.03:
+            return step
+    return step
+
+
 # ---------------------------------------------------------------------------
 # Variable blocks
 # ---------------------------------------------------------------------------
@@ -302,7 +347,9 @@ def decls(p):
   --tag-border-color-hover: {tagBorderHover};
 
   /* Code and syntax highlighting */
-  --code-background: {content};
+  --code-background: {codeBg};
+  --code-border-width: 1px;
+  --code-border-color: {borderStrong};
   --code-normal: {synFg};
   --code-comment: {synComment};
   --code-function: {synFunction};
@@ -315,16 +362,17 @@ def decls(p):
   --code-tag: {synTag};
   --code-value: {synNumber};
 
-  /* Editor furniture */
-  --blockquote-background-color: {content};
-  --blockquote-border-color: {borderStrong};
+  /* Editor furniture: quote/embed/header surfaces reuse the separated
+     content tone so none of these blocks sink into the note background. */
+  --blockquote-background-color: {codeBg};
+  --blockquote-border-color: {accent};
   --hr-color: {borderStrong};
   --list-marker-color: {accent};
-  --embed-background: {content};
+  --embed-background: {codeBg};
   --embed-border-start: 2px solid {accent};
 
   /* Tables */
-  --table-header-background: {content};
+  --table-header-background: {tableHeaderBg};
   --table-header-color: {text};
   --table-border-color: {border};
   --table-row-alt-background: {rowAlt};
@@ -423,6 +471,10 @@ def decls(p):
         accentSolid=p["accentSolid"], onAccent=p["onAccent"],
         bg=p["background"], bgMix=mix(p["background"], 60, p["content"]),
         content=p["content"], sidebar=p["sidebar"],
+        # Surfaces that hold blocks of content (code, quote, embed, table
+        # header) use the separated code tone; see code_bg().
+        codeBg=code_bg(p),
+        tableHeaderBg=code_bg(p),
         inputBg=p["input"], elevated=p["elevated"], hover=p["hover"],
         border=p["border"], borderStrong=p["borderStrong"],
         text=p["text"], muted=p["muted"], hint=p["hint"],

@@ -131,6 +131,8 @@ body {
 
   /* Code and syntax highlighting */
   --code-background: #18181b;
+  --code-border-width: 1px;
+  --code-border-color: #3f3f46;
   --code-normal: #e6edf3;
   --code-comment: #8b949e;
   --code-function: #d2a8ff;
@@ -143,9 +145,10 @@ body {
   --code-tag: #7ee787;
   --code-value: #79c0ff;
 
-  /* Editor furniture */
+  /* Editor furniture: quote/embed/header surfaces reuse the separated
+     content tone so none of these blocks sink into the note background. */
   --blockquote-background-color: #18181b;
-  --blockquote-border-color: #3f3f46;
+  --blockquote-border-color: #8dff4f;
   --hr-color: #3f3f46;
   --list-marker-color: #8dff4f;
   --embed-background: #18181b;
@@ -344,6 +347,8 @@ body {
 
   /* Code and syntax highlighting */
   --code-background: #e4e4e7;
+  --code-border-width: 1px;
+  --code-border-color: #d4d4d8;
   --code-normal: #24292f;
   --code-comment: #6e7781;
   --code-function: #8250df;
@@ -356,9 +361,10 @@ body {
   --code-tag: #116329;
   --code-value: #0550ae;
 
-  /* Editor furniture */
+  /* Editor furniture: quote/embed/header surfaces reuse the separated
+     content tone so none of these blocks sink into the note background. */
   --blockquote-background-color: #e4e4e7;
-  --blockquote-border-color: #d4d4d8;
+  --blockquote-border-color: #2a7314;
   --hr-color: #d4d4d8;
   --list-marker-color: #2a7314;
   --embed-background: #e4e4e7;
@@ -556,7 +562,9 @@ body.rail-high-contrast-dark.theme-dark {
   --tag-border-color-hover: #8dff4f66;
 
   /* Code and syntax highlighting */
-  --code-background: #000;
+  --code-background: #38383b;
+  --code-border-width: 1px;
+  --code-border-color: #a1a1aa;
   --code-normal: #fff;
   --code-comment: #7ca668;
   --code-function: #dcdcaa;
@@ -569,16 +577,17 @@ body.rail-high-contrast-dark.theme-dark {
   --code-tag: #569cd6;
   --code-value: #fff;
 
-  /* Editor furniture */
-  --blockquote-background-color: #000;
-  --blockquote-border-color: #a1a1aa;
+  /* Editor furniture: quote/embed/header surfaces reuse the separated
+     content tone so none of these blocks sink into the note background. */
+  --blockquote-background-color: #38383b;
+  --blockquote-border-color: #8dff4f;
   --hr-color: #a1a1aa;
   --list-marker-color: #8dff4f;
-  --embed-background: #000;
+  --embed-background: #38383b;
   --embed-border-start: 2px solid #8dff4f;
 
   /* Tables */
-  --table-header-background: #000;
+  --table-header-background: #38383b;
   --table-header-color: #fafafa;
   --table-border-color: #52525b;
   --table-row-alt-background: #a1a1aa1f;
@@ -769,7 +778,9 @@ body.rail-high-contrast-light.theme-light {
   --tag-border-color-hover: #125c1966;
 
   /* Code and syntax highlighting */
-  --code-background: #fff;
+  --code-background: #dedee1;
+  --code-border-width: 1px;
+  --code-border-color: #a1a1aa;
   --code-normal: #292929;
   --code-comment: #515151;
   --code-function: #622cbc;
@@ -782,16 +793,17 @@ body.rail-high-contrast-light.theme-light {
   --code-tag: #024c1a;
   --code-value: #023b95;
 
-  /* Editor furniture */
-  --blockquote-background-color: #fff;
-  --blockquote-border-color: #a1a1aa;
+  /* Editor furniture: quote/embed/header surfaces reuse the separated
+     content tone so none of these blocks sink into the note background. */
+  --blockquote-background-color: #dedee1;
+  --blockquote-border-color: #125c19;
   --hr-color: #a1a1aa;
   --list-marker-color: #125c19;
-  --embed-background: #fff;
+  --embed-background: #dedee1;
   --embed-border-start: 2px solid #125c19;
 
   /* Tables */
-  --table-header-background: #fff;
+  --table-header-background: #dedee1;
   --table-header-color: #18181b;
   --table-border-color: #d4d4d8;
   --table-row-alt-background: #a1a1aa1f;
@@ -982,7 +994,9 @@ body.rail-minimal-dark.theme-dark {
   --tag-border-color-hover: #a2d7b766;
 
   /* Code and syntax highlighting */
-  --code-background: #181b1e;
+  --code-background: #393f46;
+  --code-border-width: 1px;
+  --code-border-color: #40474f;
   --code-normal: #e6edf3;
   --code-comment: #8b949e;
   --code-function: #d2a8ff;
@@ -995,16 +1009,17 @@ body.rail-minimal-dark.theme-dark {
   --code-tag: #7ee787;
   --code-value: #79c0ff;
 
-  /* Editor furniture */
-  --blockquote-background-color: #181b1e;
-  --blockquote-border-color: #40474f;
+  /* Editor furniture: quote/embed/header surfaces reuse the separated
+     content tone so none of these blocks sink into the note background. */
+  --blockquote-background-color: #393f46;
+  --blockquote-border-color: #a2d7b7;
   --hr-color: #40474f;
   --list-marker-color: #a2d7b7;
-  --embed-background: #181b1e;
+  --embed-background: #393f46;
   --embed-border-start: 2px solid #a2d7b7;
 
   /* Tables */
-  --table-header-background: #181b1e;
+  --table-header-background: #393f46;
   --table-header-color: #eceef1;
   --table-border-color: #30363c;
   --table-row-alt-background: #40474f1f;
@@ -1195,7 +1210,9 @@ body.rail-minimal-light.theme-light {
   --tag-border-color-hover: #246b4766;
 
   /* Code and syntax highlighting */
-  --code-background: #f5f6f7;
+  --code-background: #e5e8eb;
+  --code-border-width: 1px;
+  --code-border-color: #c8cfd6;
   --code-normal: #24292f;
   --code-comment: #6e7781;
   --code-function: #8250df;
@@ -1208,16 +1225,17 @@ body.rail-minimal-light.theme-light {
   --code-tag: #116329;
   --code-value: #0550ae;
 
-  /* Editor furniture */
-  --blockquote-background-color: #f5f6f7;
-  --blockquote-border-color: #c8cfd6;
+  /* Editor furniture: quote/embed/header surfaces reuse the separated
+     content tone so none of these blocks sink into the note background. */
+  --blockquote-background-color: #e5e8eb;
+  --blockquote-border-color: #246b47;
   --hr-color: #c8cfd6;
   --list-marker-color: #246b47;
-  --embed-background: #f5f6f7;
+  --embed-background: #e5e8eb;
   --embed-border-start: 2px solid #246b47;
 
   /* Tables */
-  --table-header-background: #f5f6f7;
+  --table-header-background: #e5e8eb;
   --table-header-color: #1d252d;
   --table-border-color: #e0e3e7;
   --table-row-alt-background: #c8cfd61f;
